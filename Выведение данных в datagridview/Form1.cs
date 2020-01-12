@@ -122,6 +122,25 @@ namespace Выведение_данных_в_datagridview
 
             foreach (var note in notesOnCurrentDay)
                 MessageBox.Show(note.TextNote);
+           
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            
+
+        }
+        public void Refresh()
+        {            
+            Notes = new List<Note>(Note.DerializeNotesFromFile());
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Refresh();
+            listView1.Clear();
+            foreach (var note in Notes)
+                listView1.Items.Add(note.Date.ToShortDateString() + " : " + note.TextNote);
         }
     }
 
