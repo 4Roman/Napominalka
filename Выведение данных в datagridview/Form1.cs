@@ -19,35 +19,39 @@ namespace Выведение_данных_в_datagridview
         {
             InitializeComponent();
 
-            //listView1.
+        //listView1.
 
-            //List<Note> notes = new List<Note>();
-            // подожди минутку
-            // у меня нет микрофона и наушники только Type-c
-            //соханение в xml строку
-            //string xml = notes.SerializeToXmlString();
-            ////notes.Add(new Note());
-            //сохранение xml строки в файл
-            //SerializeExtension.SaveToXmlFile(xml, "Notes.xml");
+        //List<Note> notes = new List<Note>();
+        // подожди минутку
+        // у меня нет микрофона и наушники только Type-c
+        //соханение в xml строку
+        //string xml = notes.SerializeToXmlString();
+        ////notes.Add(new Note());
+        //сохранение xml строки в файл
+        //SerializeExtension.SaveToXmlFile(xml, "Notes.xml");
 
-            //загружаем из файла
-            //List<Note> notes = new List<Note>(); // загружаем в клон
+        //загружаем из файла
+        //List<Note> notes = new List<Note>(); // загружаем в клон
+        
             Notes = SerializeExtension.LoadFromXml<List<Note>>("Notes.xml");
 
             foreach (var note in Notes)
                 listView1.Items.Add(note.Date.ToShortDateString() + " : " + note.TextNote);
 
-            // Вывести уведомление, когда наступила дата заметки
-            CheckNotesOnCurrentDate(Notes, DateTime.Now);
-
+            // Вывести уведомление, когда наступила дата заметки и удаление если уже высвечивалось
+        CheckNotesOnCurrentDate(Notes, DateTime.Now);
+           
         }
 
-        private void CheckNotesOnCurrentDate(List<Note> notes, DateTime date)
+        public void CheckNotesOnCurrentDate(List<Note> notes, DateTime date)
         {
             foreach (var note in notes)
             {
                 if (note.Date.Date == date.Date)
+                {
                     MessageBox.Show(note.TextNote);
+                    Notes.Remove(note);
+                }
             }
         }
 
