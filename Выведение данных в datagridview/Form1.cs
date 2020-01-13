@@ -1,20 +1,17 @@
 ﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Collections.ObjectModel;
 using System.Windows.Forms;
+using System.ComponentModel;
+using System.Linq;
 
 namespace Выведение_данных_в_datagridview
 {
     public partial class Form1 : Form
     {
 
-        List<Note> Notes { get; set; } = new List<Note>();
+        BindingList<Note> Notes { get; set; } = new BindingList<Note>();
         List<Note> OldNotes { get; set; } = new List<Note>();
         public Form1()
         {
@@ -36,11 +33,12 @@ namespace Выведение_данных_в_datagridview
 
             // создать новый файл с заметками ( в случае поломок)
             //InitializeDefaultNotesFile();
-            Notes = new List<Note>(Note.DerializeNotesFromFile());
+            Notes = new BindingList<Note>(Note.DerializeNotesFromFile().ToList());
 
-            foreach (var note in Notes)
-                listView1.Items.Add(note.Date.ToShortDateString() + " : " + note.TextNote);
-            // Вывести уведомление, когда наступила дата заметки и удаление если уже высвечивалось
+            // TODO: DataBinding
+            dataGridViewNotes.AutoGenerateColumns = true;
+            dataGridViewNotes.DataSource = Notes;
+
             ShowNotifications();
         }
 
@@ -57,7 +55,7 @@ namespace Выведение_данных_в_datagridview
 
 
         static object locker = new object();
-        public List<Note> CheckNotesOnCurrentDate(List<Note> notes, DateTime date)
+        public List<Note> CheckNotesOnCurrentDate(IEnumerable<Note> notes, DateTime date)
         {
             lock (locker)
             {
@@ -126,12 +124,12 @@ namespace Выведение_данных_в_datagridview
         {
             Note.SerializeNotesToFile(Notes);
         }
-        public void Refresh()
-        {
-            listView1.Clear();
-            foreach (var note in Notes)
-                listView1.Items.Add(note.Date.ToShortDateString() + " : " + note.TextNote);
-        }
+        //public void Refresh()
+        //{
+        //    listView1.Clear();
+        //    foreach (var note in Notes)
+        //        listView1.Items.Add(note.Date.ToShortDateString() + " : " + note.TextNote);
+        //}
 
     }
 
