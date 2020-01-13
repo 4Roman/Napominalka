@@ -40,7 +40,6 @@ namespace Выведение_данных_в_datagridview
 
             foreach (var note in Notes)
                 listView1.Items.Add(note.Date.ToShortDateString() + " : " + note.TextNote);
-
             // Вывести уведомление, когда наступила дата заметки и удаление если уже высвечивалось
             ShowNotifications();
         }
@@ -60,7 +59,7 @@ namespace Выведение_данных_в_datagridview
         static object locker = new object();
         public List<Note> CheckNotesOnCurrentDate(List<Note> notes, DateTime date)
         {
-          lock (locker)
+            lock (locker)
             {
                 List<Note> notesOnCurrentDate = new List<Note>();
                 foreach (var note in notes)
@@ -89,9 +88,6 @@ namespace Выведение_данных_в_datagridview
                 return;
 
             Notes.Add(newForm.ResultNote);
-            listView1.Clear();
-            foreach (var note in Notes)
-                listView1.Items.Add(note.Date.ToShortDateString() + " : " + note.TextNote);
         }
 
         private void buttonSaveNotes_Click(object sender, EventArgs e)
@@ -131,13 +127,12 @@ namespace Выведение_данных_в_datagridview
             Note.SerializeNotesToFile(Notes);
         }
         public void Refresh()
-        {            
-            Notes = new List<Note>(Note.DerializeNotesFromFile());
+        {
             listView1.Clear();
             foreach (var note in Notes)
                 listView1.Items.Add(note.Date.ToShortDateString() + " : " + note.TextNote);
         }
-                
+
     }
 
 

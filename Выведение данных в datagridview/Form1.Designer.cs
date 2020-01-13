@@ -31,39 +31,23 @@ namespace Выведение_данных_в_datagridview
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.listView1 = new System.Windows.Forms.ListView();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.button1 = new System.Windows.Forms.Button();
             this.buttonSaveNotes = new System.Windows.Forms.Button();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.listView1 = new System.Windows.Forms.ListView();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // listView1
+            // timer1
             // 
-            this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(3, 3);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(375, 260);
-            this.listView1.TabIndex = 0;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.List;
-            // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.Controls.Add(this.listView1);
-            this.flowLayoutPanel1.Controls.Add(this.button1);
-            this.flowLayoutPanel1.Controls.Add(this.buttonSaveNotes);
-            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(800, 450);
-            this.flowLayoutPanel1.TabIndex = 1;
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 5000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(3, 269);
+            this.button1.Location = new System.Drawing.Point(3, 277);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(375, 58);
             this.button1.TabIndex = 1;
@@ -73,7 +57,7 @@ namespace Выведение_данных_в_datagridview
             // 
             // buttonSaveNotes
             // 
-            this.buttonSaveNotes.Location = new System.Drawing.Point(3, 333);
+            this.buttonSaveNotes.Location = new System.Drawing.Point(3, 218);
             this.buttonSaveNotes.Name = "buttonSaveNotes";
             this.buttonSaveNotes.Size = new System.Drawing.Size(375, 53);
             this.buttonSaveNotes.TabIndex = 2;
@@ -81,11 +65,26 @@ namespace Выведение_данных_в_datagridview
             this.buttonSaveNotes.UseVisualStyleBackColor = true;
             this.buttonSaveNotes.Click += new System.EventHandler(this.buttonSaveNotes_Click);
             // 
-            // timer1
+            // listView1
             // 
-            this.timer1.Enabled = true;
-            this.timer1.Interval = 5000;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            this.listView1.HideSelection = false;
+            this.listView1.Location = new System.Drawing.Point(3, 3);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(375, 209);
+            this.listView1.TabIndex = 0;
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.View = System.Windows.Forms.View.List;
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Controls.Add(this.listView1);
+            this.flowLayoutPanel1.Controls.Add(this.buttonSaveNotes);
+            this.flowLayoutPanel1.Controls.Add(this.button1);
+            this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 41);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(800, 409);
+            this.flowLayoutPanel1.TabIndex = 1;
             // 
             // Form1
             // 
@@ -102,12 +101,11 @@ namespace Выведение_данных_в_datagridview
         }
                 
         #endregion
-
-        private System.Windows.Forms.ListView listView1;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button buttonSaveNotes;
-        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
     }
 }
 
