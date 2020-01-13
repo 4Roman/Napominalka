@@ -33,8 +33,18 @@ namespace Выведение_данных_в_datagridview
 
             // создать новый файл с заметками ( в случае поломок)
             //InitializeDefaultNotesFile();
-            Notes = new BindingList<Note>(Note.DerializeNotesFromFile().ToList());
 
+            // пытаемся считать файл
+            try
+            {
+                Notes = new BindingList<Note>(Note.DerializeNotesFromFile().ToList());
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Не удалось считать файл!\n"+ e.ToString());
+                InitializeDefaultNotesFile();
+            }
+            
             // TODO: DataBinding
             dataGridViewNotes.AutoGenerateColumns = true;
             dataGridViewNotes.DataSource = Notes;

@@ -16,6 +16,8 @@ namespace Выведение_данных_в_datagridview
         public Form2()
         {
             InitializeComponent();
+
+            dateTimePicker2.ShowUpDown = true;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -27,6 +29,8 @@ namespace Выведение_данных_в_datagridview
             // create object Note
             Note note = new Note();
             DateTime date = dateTimePicker1.Value;
+            DateTime time = dateTimePicker2.Value;
+
             if (date == null)
             {
                 MessageBox.Show("Установите дату!");
@@ -43,7 +47,8 @@ namespace Выведение_данных_в_datagridview
                 MessageBox.Show("Заметка пуста!");
                 return;
             }
-            note.Date = date;
+
+            note.Date = new DateTime(date.Year,date.Month,date.Day, time.Hour,time.Minute, 0);
             note.TextNote = text;
             ResultNote = note;
             this.Close();
