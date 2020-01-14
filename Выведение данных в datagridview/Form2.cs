@@ -20,11 +20,11 @@ namespace Выведение_данных_в_datagridview
             dateTimePicker2.ShowUpDown = true;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void buttonBack_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-        private void button2_Click(object sender, EventArgs e)// надо найти куда записываются значения переменных
+        private void buttonAccept_Click(object sender, EventArgs e)// надо найти куда записываются значения переменных
         {
             // create object Note
             Note note = new Note();

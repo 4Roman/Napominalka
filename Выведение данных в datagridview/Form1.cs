@@ -87,7 +87,7 @@ namespace Выведение_данных_в_datagridview
             }
         }
 
-        public void button1_Click(object sender, EventArgs e)
+        public void buttonCreateNote_Click(object sender, EventArgs e)
         {
             Form2 newForm = new Form2();
             newForm.ShowDialog();

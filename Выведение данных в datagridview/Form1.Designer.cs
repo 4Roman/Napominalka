@@ -32,7 +32,7 @@ namespace Выведение_данных_в_datagridview
         {
             this.components = new System.ComponentModel.Container();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.button1 = new System.Windows.Forms.Button();
+            this.buttonCreateNote = new System.Windows.Forms.Button();
             this.buttonSaveNotes = new System.Windows.Forms.Button();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.dataGridViewNotes = new System.Windows.Forms.DataGridView();
@@ -46,15 +46,15 @@ namespace Выведение_данных_в_datagridview
             this.timer1.Interval = 5000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // button1
+            // buttonCreateNote
             // 
-            this.button1.Location = new System.Drawing.Point(3, 218);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(375, 58);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Создать";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.buttonCreateNote.Location = new System.Drawing.Point(3, 218);
+            this.buttonCreateNote.Name = "buttonCreateNote";
+            this.buttonCreateNote.Size = new System.Drawing.Size(375, 58);
+            this.buttonCreateNote.TabIndex = 1;
+            this.buttonCreateNote.Text = "Создать";
+            this.buttonCreateNote.UseVisualStyleBackColor = true;
+            this.buttonCreateNote.Click += new System.EventHandler(this.buttonCreateNote_Click);
             // 
             // buttonSaveNotes
             // 
@@ -70,7 +70,7 @@ namespace Выведение_данных_в_datagridview
             // 
             this.flowLayoutPanel1.Controls.Add(this.dataGridViewNotes);
             this.flowLayoutPanel1.Controls.Add(this.buttonSaveNotes);
-            this.flowLayoutPanel1.Controls.Add(this.button1);
+            this.flowLayoutPanel1.Controls.Add(this.buttonCreateNote);
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 41);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
@@ -103,7 +103,7 @@ namespace Выведение_данных_в_datagridview
                 
         #endregion
         private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonCreateNote;
         private System.Windows.Forms.Button buttonSaveNotes;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.DataGridView dataGridViewNotes;
