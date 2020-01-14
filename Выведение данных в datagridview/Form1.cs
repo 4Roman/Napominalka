@@ -13,6 +13,9 @@ namespace Выведение_данных_в_datagridview
 
         BindingList<Note> Notes { get; set; } = new BindingList<Note>();
         List<Note> OldNotes { get; set; } = new List<Note>();
+
+        public double DeltaTimeForNotifications { get; set; } = 5.0;
+
         public Form1()
         {
             InitializeComponent();
@@ -41,10 +44,10 @@ namespace Выведение_данных_в_datagridview
             }
             catch (Exception e)
             {
-                MessageBox.Show("Не удалось считать файл!\n"+ e.ToString());
+                MessageBox.Show("Не удалось считать файл!\n" + e.ToString());
                 InitializeDefaultNotesFile();
             }
-            
+
             // TODO: DataBinding
             dataGridViewNotes.AutoGenerateColumns = true;
             dataGridViewNotes.DataSource = Notes;
@@ -75,7 +78,13 @@ namespace Выведение_данных_в_datagridview
 
                     if (note.Date.Date == date.Date)
                     {
-                        notesOnCurrentDate.Add(note);
+                        TimeSpan span = date-note.Date;
+                        double result = Math.Abs( span.TotalMinutes);
+
+                        if (result <= DeltaTimeForNotifications)
+                        {
+                            notesOnCurrentDate.Add(note);
+                        }
                     }
                 }
                 //foreach (Note noteForRemove in notesForRemove)
