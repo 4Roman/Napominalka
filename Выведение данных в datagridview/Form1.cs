@@ -13,9 +13,7 @@ namespace Выведение_данных_в_datagridview
     {
         const string applicationName = "Napominalka";
         BindingList<Note> Notes { get; set; } = new BindingList<Note>();
-        List<Note> OldNotes { get; set; } = new List<Note>();
-
-        public double DeltaTimeForNotifications { get; set; } = 5.0;
+        List<Note> OldNotes { get; set; } = new List<Note>();            
 
         public Form1()
         {
@@ -69,6 +67,7 @@ namespace Выведение_данных_в_datagridview
 
 
         static object locker = new object();
+        public double DeltaTimeForNotifications { get; set; } = 5.0;
         public List<Note> CheckNotesOnCurrentDate(IEnumerable<Note> notes, DateTime date)
         {
             lock (locker)
@@ -76,7 +75,7 @@ namespace Выведение_данных_в_datagridview
                 List<Note> notesOnCurrentDate = new List<Note>();
                 foreach (var note in notes)
                 {
-
+                    if (note.Date.Date <= DateTime.Now) { notesOnCurrentDate.Add(note); }
                     if (note.Date.Date == date.Date)
                     {
                         TimeSpan span = date - note.Date;
