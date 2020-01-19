@@ -162,8 +162,7 @@ namespace Выведение_данных_в_datagridview
         private void Form1_Load(object sender, EventArgs e)
         {
             notifyIcon1.BalloonTipTitle = "Some Title";
-            notifyIcon1.BalloonTipText = "Some Notification";
-            notifyIcon1.Text = "Application Name";
+            notifyIcon1.Text = "Напоминалка";
 
         }
 
@@ -183,6 +182,21 @@ namespace Выведение_данных_в_datagridview
             }
             else if (FormWindowState.Normal == this.WindowState)
             { notifyIcon1.Visible = false; }
+        }
+
+        private void toolStripMenuItemOpen_Click(object sender, EventArgs e)
+        {
+            this.Show();
+            notifyIcon1.Visible = false;
+            WindowState = FormWindowState.Normal;
+
+        }
+
+        private void toolStripMenuItemClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+           
+
         }
 
         //public void Refresh()
