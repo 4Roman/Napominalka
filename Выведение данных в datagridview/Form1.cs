@@ -5,12 +5,13 @@ using System.Collections.ObjectModel;
 using System.Windows.Forms;
 using System.ComponentModel;
 using System.Linq;
+using Microsoft.Win32;
 
 namespace Выведение_данных_в_datagridview
 {
     public partial class Form1 : Form
     {
-
+        const string applicationName = "Napominalka";
         BindingList<Note> Notes { get; set; } = new BindingList<Note>();
         List<Note> OldNotes { get; set; } = new List<Note>();
 
@@ -178,25 +179,86 @@ namespace Выведение_данных_в_datagridview
             {
                 this.Hide();
                 notifyIcon1.Visible = true;
-                notifyIcon1.ShowBalloonTip(1000);
             }
             else if (FormWindowState.Normal == this.WindowState)
             { notifyIcon1.Visible = false; }
         }
 
+        private static bool CheckAutorun()
+        {
+            bool isEnableAutorun = false;
+            RegistryKey reg;
+            reg = Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Run\\");
+            var autoRun = reg.GetValue(applicationName); // проверяем наличие записи в реестре
+            if (autoRun == null)
+                isEnableAutorun = false;
+            else isEnableAutorun = true;
+            return isEnableAutorun;//если CheckAutorun true - то автозапук есть
+        }
         private void toolStripMenuItemOpen_Click(object sender, EventArgs e)
         {
             this.Show();
             notifyIcon1.Visible = false;
             WindowState = FormWindowState.Normal;
-
         }
 
         private void toolStripMenuItemClose_Click(object sender, EventArgs e)
         {
             this.Close();
-           
+        }
+        /// <summary>
+        /// true если удалось задать значение
+        /// false если задать значение не удалось
+        /// </summary>
+        /// <param name="autorun"></param>
+        /// <returns></returns>
+        public bool SetAutorunValue(bool autorun)
+        {
+            //const string name = "MyTestApplication"; // как запустить этот участок?
+            string ExePath = System.Windows.Forms.Application.ExecutablePath;
+            RegistryKey reg;
+            reg = Registry.CurrentUser.CreateSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Run\\");
+            //reg.GetValue(name) Всё работает
 
+            try
+            {
+                if (autorun)
+                    reg.SetValue(applicationName, ExePath);
+                else
+                    reg.DeleteValue(applicationName);
+
+                reg.Close();
+            }
+            catch
+            {
+                return false;
+            }
+            return true;
+        }
+
+        private void toolStripMenuItemAutorun_Click(object sender, EventArgs e)
+        {
+            var autorun = CheckAutorun();
+            if (autorun == true)
+            {
+                var result = SetAutorunValue(false);
+                if (result == true)
+                    toolStripMenuItemAutorun.CheckState = CheckState.Unchecked;
+            }
+            else
+            {
+                var result = SetAutorunValue(true);
+                if (result == true)
+                    toolStripMenuItemAutorun.CheckState = CheckState.Checked;
+            }
+        }
+
+        private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
+        {
+            var autorun = CheckAutorun();
+            if (autorun == true)
+                toolStripMenuItemAutorun.CheckState = CheckState.Checked;
+            else toolStripMenuItemAutorun.CheckState = CheckState.Unchecked;
         }
 
         //public void Refresh()

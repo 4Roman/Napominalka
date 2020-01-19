@@ -108,6 +108,7 @@ namespace Выведение_данных_в_datagridview
             this.toolStripMenuItemAutorun});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(181, 92);
+            this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
             // 
             // toolStripMenuItemOpen
             // 
@@ -126,10 +127,12 @@ namespace Выведение_данных_в_datagridview
             // toolStripMenuItemAutorun
             // 
             this.toolStripMenuItemAutorun.Checked = true;
-            this.toolStripMenuItemAutorun.CheckState = System.Windows.Forms.CheckState.Indeterminate;
+            this.toolStripMenuItemAutorun.CheckOnClick = true;
+            this.toolStripMenuItemAutorun.CheckState = System.Windows.Forms.CheckState.Checked;
             this.toolStripMenuItemAutorun.Name = "toolStripMenuItemAutorun";
             this.toolStripMenuItemAutorun.Size = new System.Drawing.Size(180, 22);
             this.toolStripMenuItemAutorun.Text = "Автозапуск";
+            this.toolStripMenuItemAutorun.Click += new System.EventHandler(this.toolStripMenuItemAutorun_Click);
             // 
             // Form1
             // 
