@@ -37,20 +37,20 @@
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.SuspendLayout();
             // 
-            // buttonCreateNote
+            // buttonBack
             // 
             this.buttonBack.Location = new System.Drawing.Point(578, 214);
-            this.buttonBack.Name = "buttonCreateNote";
+            this.buttonBack.Name = "buttonBack";
             this.buttonBack.Size = new System.Drawing.Size(129, 44);
             this.buttonBack.TabIndex = 0;
             this.buttonBack.Text = "Назад";
             this.buttonBack.UseVisualStyleBackColor = true;
             this.buttonBack.Click += new System.EventHandler(this.buttonBack_Click);
             // 
-            // button2
+            // buttonAccept
             // 
             this.buttonAccept.Location = new System.Drawing.Point(12, 211);
-            this.buttonAccept.Name = "button2";
+            this.buttonAccept.Name = "buttonAccept";
             this.buttonAccept.Size = new System.Drawing.Size(145, 47);
             this.buttonAccept.TabIndex = 1;
             this.buttonAccept.Text = "Готово";
@@ -100,8 +100,9 @@
             // 
             // dateTimePicker2
             // 
+            this.dateTimePicker2.Cursor = System.Windows.Forms.Cursors.Default;
             this.dateTimePicker2.CustomFormat = "hh:mm";
-            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Time;
             this.dateTimePicker2.Location = new System.Drawing.Point(256, 12);
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(200, 20);

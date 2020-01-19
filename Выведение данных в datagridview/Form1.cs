@@ -78,8 +78,8 @@ namespace Выведение_данных_в_datagridview
 
                     if (note.Date.Date == date.Date)
                     {
-                        TimeSpan span = date-note.Date;
-                        double result = Math.Abs( span.TotalMinutes);
+                        TimeSpan span = date - note.Date;
+                        double result = Math.Abs(span.TotalMinutes);
 
                         if (result <= DeltaTimeForNotifications)
                         {
@@ -118,31 +118,73 @@ namespace Выведение_данных_в_datagridview
             MessageBox.Show("Успешно сохранено");
         }
 
+        private static readonly Object notificationLocker = new Object();
         private void timer1_Tick(object sender, EventArgs e)
         {
-            lock (locker)
-            {
-                // Вывести уведомление, когда наступила дата заметки
-                ShowNotifications();
-            }
+            // Вывести уведомление, когда наступила дата заметки
+            ShowNotifications();
         }
 
+        private bool busyNotifications = false;
         private void ShowNotifications()
         {
-            List<Note> notesOnCurrentDay = CheckNotesOnCurrentDate(Notes, DateTime.Now);
-            foreach (var note in notesOnCurrentDay)
-                Notes.Remove(note);
+            lock (notificationLocker)
+            {
+                if (busyNotifications)
+                    return;
 
-            foreach (var note in notesOnCurrentDay)
-                MessageBox.Show(note.TextNote);
-            Refresh();
+                busyNotifications = true;
+                List<Note> notesOnCurrentDay = CheckNotesOnCurrentDate(Notes, DateTime.Now);
+                //foreach (var note in notesOnCurrentDay)
+                //    Notes.Remove(note);
 
+                foreach (var note in notesOnCurrentDay)
+                {
+                    var formNotification = new FormNotification(note);
+
+                    formNotification.ShowDialog();
+                    if (formNotification.Note == null)
+                        Notes.Remove(note);
+
+                    //MessageBox.Show(note.TextNote); // TODO заменить на форму с переносом уведомления
+                    //Refresh();
+                }
+                busyNotifications = false;
+            }
+            dataGridViewNotes.Refresh();
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             Note.SerializeNotesToFile(Notes);
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            notifyIcon1.BalloonTipTitle = "Some Title";
+            notifyIcon1.BalloonTipText = "Some Notification";
+            notifyIcon1.Text = "Application Name";
+
+        }
+
+        private void notifyIcon1_DoubleClick(object sender, EventArgs e)
+        {
+            this.Show();
+            notifyIcon1.Visible = false;
+            WindowState = FormWindowState.Normal;
+        }
+        private void Form1_Resize(object sender, EventArgs e)
+        {
+            if (WindowState == FormWindowState.Minimized)
+            {
+                this.Hide();
+                notifyIcon1.Visible = true;
+                notifyIcon1.ShowBalloonTip(1000);
+            }
+            else if (FormWindowState.Normal == this.WindowState)
+            { notifyIcon1.Visible = false; }
+        }
+
         //public void Refresh()
         //{
         //    listView1.Clear();
