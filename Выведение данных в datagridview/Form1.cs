@@ -6,6 +6,9 @@ using System.Windows.Forms;
 using System.ComponentModel;
 using System.Linq;
 using Microsoft.Win32;
+using System.IO;
+
+
 
 namespace Выведение_данных_в_datagridview
 {
@@ -16,8 +19,11 @@ namespace Выведение_данных_в_datagridview
         List<Note> OldNotes { get; set; } = new List<Note>();
 
         public Form1()
-        {
+        {        
+            
             InitializeComponent();
+            if (Directory.Exists(@"C:\Napominalka") == false) Directory.CreateDirectory(@"C:\Napominalka");
+
 
             //listView1.
 

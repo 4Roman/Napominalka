@@ -15,7 +15,7 @@ namespace Выведение_данных_в_datagridview
         public DateTime Date { get; set; } = new DateTime();
         public string TextNote { get; set; } = string.Empty;
 
-        public static void SerializeNotesToFile(IEnumerable<Note> notes, string filepath = "Notes.xml")
+        public static void SerializeNotesToFile(IEnumerable<Note> notes, string filepath = @"C:\Napominalka\Notes.xml")
         {
             List<Note> list = notes.ToList();
             //соханение в xml строку
@@ -24,7 +24,7 @@ namespace Выведение_данных_в_datagridview
             SerializeExtension.SaveToXmlFile(xml, filepath);
         }
 
-        public static IEnumerable<Note> DerializeNotesFromFile(string filepath = "Notes.xml")
+        public static IEnumerable<Note> DerializeNotesFromFile(string filepath = @"C:\Napominalka\Notes.xml")
         {
             return SerializeExtension.LoadFromXml<List<Note>>(filepath);
         }
