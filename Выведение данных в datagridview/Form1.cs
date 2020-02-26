@@ -13,7 +13,7 @@ namespace Выведение_данных_в_datagridview
     {
         const string applicationName = "Napominalka";
         BindingList<Note> Notes { get; set; } = new BindingList<Note>();
-        List<Note> OldNotes { get; set; } = new List<Note>();            
+        List<Note> OldNotes { get; set; } = new List<Note>();
 
         public Form1()
         {
@@ -74,8 +74,7 @@ namespace Выведение_данных_в_datagridview
             {
                 List<Note> notesOnCurrentDate = new List<Note>();
                 foreach (var note in notes)
-                {
-                    if (note.Date.Date <= DateTime.Now) { notesOnCurrentDate.Add(note); }
+                {                   
                     if (note.Date.Date == date.Date)
                     {
                         TimeSpan span = date - note.Date;
@@ -271,4 +270,3 @@ namespace Выведение_данных_в_datagridview
 
 
 }
-
