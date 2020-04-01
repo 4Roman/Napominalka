@@ -80,7 +80,7 @@ namespace Выведение_данных_в_datagridview
             {
                 List<Note> notesOnCurrentDate = new List<Note>();
                 foreach (var note in notes)
-                {                   
+                {
                     if (note.Date.Date == date.Date)
                     {
                         TimeSpan span = date - note.Date;
@@ -90,6 +90,10 @@ namespace Выведение_данных_в_datagridview
                         {
                             notesOnCurrentDate.Add(note);
                         }
+                    }
+                    else if (note.Date.Date <= date.Date)
+                    {
+                        notesOnCurrentDate.Add(note);
                     }
                 }
                 //foreach (Note noteForRemove in notesForRemove)
