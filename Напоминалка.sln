@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.29403.142
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Выведение данных в datagridview", "Выведение данных в datagridview\Выведение данных в datagridview.csproj", "{01A5B75A-21F5-4ED2-B0EF-EAE5C1A15067}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setuper", "Setuper\Setuper.vdproj", "{1A0ADE46-6C63-44E9-82C7-8990E933FBEE}"
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Napominalka", "Setuper\Setuper.vdproj", "{1A0ADE46-6C63-44E9-82C7-8990E933FBEE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

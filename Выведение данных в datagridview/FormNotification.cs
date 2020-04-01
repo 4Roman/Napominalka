@@ -34,5 +34,11 @@ namespace Выведение_данных_в_datagridview
             Note = null;
             this.Close();
         }
+
+        private void buttonNextYear_Click(object sender, EventArgs e)            
+        {           
+            Note.Date = Note.Date.AddYears(1);
+            this.Close();
+        }
     }
 }
