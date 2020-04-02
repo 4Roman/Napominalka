@@ -40,10 +40,10 @@ namespace Выведение_данных_в_datagridview
             this.toolStripMenuItemClose = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemAutorun = new System.Windows.Forms.ToolStripMenuItem();
             this.dataGridViewNotes = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
             this.noteBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewNotes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.noteBindingSource)).BeginInit();
@@ -123,18 +123,7 @@ namespace Выведение_данных_в_datagridview
             this.dataGridViewNotes.Size = new System.Drawing.Size(707, 544);
             this.dataGridViewNotes.StandardTab = true;
             this.dataGridViewNotes.TabIndex = 3;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "Date";
-            this.dataGridViewTextBoxColumn1.HeaderText = "Date";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "TextNote";
-            this.dataGridViewTextBoxColumn2.HeaderText = "TextNote";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewNotes.SizeChanged += new System.EventHandler(this.dataGridViewNotes_SizeChanged);
             // 
             // panel1
             // 
@@ -148,6 +137,22 @@ namespace Выведение_данных_в_datagridview
             // noteBindingSource
             // 
             this.noteBindingSource.DataSource = typeof(Выведение_данных_в_datagridview.Note);
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "Date";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Дата";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewTextBoxColumn1.Width = 58;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "TextNote";
+            this.dataGridViewTextBoxColumn2.HeaderText = "Заметка";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
             // 
             // Form1
             // 
@@ -184,9 +189,9 @@ namespace Выведение_данных_в_datagridview
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemAutorun;
         private System.Windows.Forms.DataGridView dataGridViewNotes;
         private System.Windows.Forms.BindingSource noteBindingSource;
+        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.Panel panel1;
     }
 }
 
