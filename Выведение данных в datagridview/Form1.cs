@@ -268,11 +268,7 @@ namespace Выведение_данных_в_datagridview
             if (autorun == true)
                 toolStripMenuItemAutorun.CheckState = CheckState.Checked;
             else toolStripMenuItemAutorun.CheckState = CheckState.Unchecked;
-        }
-
-        private void dataGridViewNotes_SizeChanged(object sender, EventArgs e)
-        {            
-        }
+        }               
 
         //public void Refresh()
         //{

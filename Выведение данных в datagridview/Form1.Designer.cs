@@ -32,6 +32,8 @@ namespace Выведение_данных_в_datagridview
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.buttonCreateNote = new System.Windows.Forms.Button();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
@@ -112,6 +114,7 @@ namespace Выведение_данных_в_datagridview
             // dataGridViewNotes
             // 
             this.dataGridViewNotes.AllowDrop = true;
+            this.dataGridViewNotes.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dataGridViewNotes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewNotes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
@@ -120,10 +123,12 @@ namespace Выведение_данных_в_datagridview
             this.dataGridViewNotes.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewNotes.Location = new System.Drawing.Point(0, 0);
             this.dataGridViewNotes.Name = "dataGridViewNotes";
+            this.dataGridViewNotes.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.dataGridViewNotes.RowTemplate.DividerHeight = 1;
+            this.dataGridViewNotes.RowTemplate.Height = 30;
             this.dataGridViewNotes.Size = new System.Drawing.Size(707, 544);
             this.dataGridViewNotes.StandardTab = true;
             this.dataGridViewNotes.TabIndex = 3;
-            this.dataGridViewNotes.SizeChanged += new System.EventHandler(this.dataGridViewNotes_SizeChanged);
             // 
             // panel1
             // 
@@ -142,6 +147,8 @@ namespace Выведение_данных_в_datagridview
             // 
             this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.dataGridViewTextBoxColumn1.DataPropertyName = "Date";
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewTextBoxColumn1.HeaderText = "Дата";
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             this.dataGridViewTextBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.False;
@@ -151,8 +158,11 @@ namespace Выведение_данных_в_datagridview
             // 
             this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.dataGridViewTextBoxColumn2.DataPropertyName = "TextNote";
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridViewTextBoxColumn2.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewTextBoxColumn2.HeaderText = "Заметка";
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
             // Form1
             // 
