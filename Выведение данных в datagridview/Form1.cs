@@ -79,6 +79,7 @@ namespace Выведение_данных_в_datagridview
             lock (locker)
             {
                 List<Note> notesOnCurrentDate = new List<Note>();
+                DateTime dt = new DateTime(0001, 1, 1);
                 foreach (var note in notes)
                 {
                     if (note.Date.Date == date.Date)
@@ -91,7 +92,7 @@ namespace Выведение_данных_в_datagridview
                             notesOnCurrentDate.Add(note);
                         }
                     }
-                    else if (note.Date.Date <= date.Date)
+                    else if (note.Date.Date <= date.Date && note.Date != dt)
                     {
                         notesOnCurrentDate.Add(note);
                     }
