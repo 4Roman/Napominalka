@@ -33,6 +33,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Nevron.Nov.Barcode, Version=20.1.28.12, Culture=neutral, PublicKeyToken=b33b1a04bb5ca8ad" />
+    <Reference Include="Nevron.Nov.Chart, Version=20.1.28.12, Culture=neutral, PublicKeyToken=b33b1a04bb5ca8ad" />
+    <Reference Include="Nevron.Nov.Diagram, Version=20.1.28.12, Culture=neutral, PublicKeyToken=b33b1a04bb5ca8ad" />
+    <Reference Include="Nevron.Nov.Grid, Version=20.1.28.12, Culture=neutral, PublicKeyToken=b33b1a04bb5ca8ad" />
+    <Reference Include="Nevron.Nov.Host.WinForm, Version=20.1.28.12, Culture=neutral, PublicKeyToken=b33b1a04bb5ca8ad" />
+    <Reference Include="Nevron.Nov.Presentation, Version=20.1.28.12, Culture=neutral, PublicKeyToken=b33b1a04bb5ca8ad" />
+    <Reference Include="Nevron.Nov.Schedule, Version=20.1.28.12, Culture=neutral, PublicKeyToken=b33b1a04bb5ca8ad" />
+    <Reference Include="Nevron.Nov.Text, Version=20.1.28.12, Culture=neutral, PublicKeyToken=b33b1a04bb5ca8ad" />
+    <Reference Include="Nevron.Nov.WinFormControls, Version=20.1.28.12, Culture=neutral, PublicKeyToken=b33b1a04bb5ca8ad" />
     <Reference Include="SerializeExtension">
       <HintPath>.\SerializeExtension.dll</HintPath>
     </Reference>

@@ -10,10 +10,10 @@ using System.Windows.Forms;
 
 namespace Выведение_данных_в_datagridview
 {
-    public partial class Form2 : Form
+    public partial class Napominalka : Form
     {
         public Note ResultNote { get; set; }
-        public Form2()
+        public Napominalka()
         {
             InitializeComponent();
 
@@ -66,11 +66,6 @@ namespace Выведение_данных_в_datagridview
             string text = richTextBox1.Text;
             MessageBox.Show(text);
         }
-        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void button4_Click(object sender, EventArgs e)
         {
             DateTime date = dateTimePicker1.Value;
