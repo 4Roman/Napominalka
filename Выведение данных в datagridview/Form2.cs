@@ -10,10 +10,10 @@ using System.Windows.Forms;
 
 namespace Выведение_данных_в_datagridview
 {
-    public partial class Napominalka : Form
+    public partial class Form2 : Form
     {
         public Note ResultNote { get; set; }
-        public Napominalka()
+        public Form2()
         {
             InitializeComponent();
 

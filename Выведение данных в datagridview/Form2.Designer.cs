@@ -1,6 +1,6 @@
 ﻿namespace Выведение_данных_в_datagridview
 {
-    partial class Napominalka
+    partial class Form2
     {
         /// <summary>
         /// Required designer variable.
@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form2));
             this.buttonBack = new System.Windows.Forms.Button();
             this.buttonAccept = new System.Windows.Forms.Button();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
@@ -131,7 +132,7 @@
             this.groupBoxNote.TabStop = false;
             this.groupBoxNote.Text = "Заметка";
             // 
-            // Napominalka
+            // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -141,8 +142,9 @@
             this.Controls.Add(this.groupBoxDate);
             this.Controls.Add(this.buttonAccept);
             this.Controls.Add(this.buttonBack);
-            this.Name = "Napominalka";
-            this.Text = "Form2";
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Name = "Form2";
+            this.Text = "Napominalka";
             this.groupBoxDate.ResumeLayout(false);
             this.groupBoxTime.ResumeLayout(false);
             this.groupBoxNote.ResumeLayout(false);

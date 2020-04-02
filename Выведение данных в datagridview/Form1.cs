@@ -108,7 +108,7 @@ namespace Выведение_данных_в_datagridview
 
         public void buttonCreateNote_Click(object sender, EventArgs e)
         {
-            Napominalka newForm = new Napominalka();
+            Form2 newForm = new Form2();
             newForm.ShowDialog();
 
             if (newForm.ResultNote == null)
