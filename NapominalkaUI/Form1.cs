@@ -7,8 +7,7 @@ using System.ComponentModel;
 using System.Linq;
 using Microsoft.Win32;
 using System.IO;
-
-
+using System.Drawing;
 
 namespace NapominalkaUI
 {
@@ -55,11 +54,16 @@ namespace NapominalkaUI
 
             // TODO: DataBinding
             dataGridViewNotes.AutoGenerateColumns = true;
-            dataGridViewNotes.DataSource = Notes;           
+            dataGridViewNotes.DataSource = Notes;
+            //dataGridViewNotes.DataBindings.CollectionChanged += DataBindings_CollectionChanged;
 
             ShowNotifications();
         }
-        
+
+        private void DataBindings_CollectionChanged(object sender, CollectionChangeEventArgs e)
+        {
+            СolorizeByPriorities(dataGridViewNotes);
+        }
 
         public void InitializeDefaultNotesFile()
         {
@@ -162,6 +166,7 @@ namespace NapominalkaUI
                 }
                 busyNotifications = false;
             }
+            СolorizeByPriorities(dataGridViewNotes);
             dataGridViewNotes.Refresh();
         }
 
@@ -271,10 +276,27 @@ namespace NapominalkaUI
             else toolStripMenuItemAutorun.CheckState = CheckState.Unchecked;
         }
 
-      
+        private void СolorizeByPriorities(System.Windows.Forms.DataGridView dataGridView)
+        {
+            System.Collections.IList list = dataGridView.Rows;
+            for (int i = 0; i < list.Count; i++)
+            {
+                DataGridViewRow row = (DataGridViewRow)list[i];
+                var priorityCell = row.Cells["Приоритет"];
+                //var priorityCell = dataGridView.
 
+                if (priorityCell.Value != null)
+                {
+                    if (priorityCell.Value.ToString() == Note.Priorities.High.ToString())
+                        row.DefaultCellStyle.BackColor = Color.Red;
+                    if (priorityCell.Value.ToString() == Note.Priorities.Medium.ToString())
+                        row.DefaultCellStyle.BackColor = Color.Yellow;
+                    if (priorityCell.Value.ToString() == Note.Priorities.Low.ToString())
+                        row.DefaultCellStyle.BackColor = Color.LightGray;
+                }
 
-
+            }
+        }
 
 
         //public void Refresh()

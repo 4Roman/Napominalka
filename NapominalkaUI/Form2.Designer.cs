@@ -37,6 +37,7 @@
             this.groupBoxDate = new System.Windows.Forms.GroupBox();
             this.groupBoxTime = new System.Windows.Forms.GroupBox();
             this.groupBoxNote = new System.Windows.Forms.GroupBox();
+            this.comboBoxNotePriority = new System.Windows.Forms.ComboBox();
             this.groupBoxDate.SuspendLayout();
             this.groupBoxTime.SuspendLayout();
             this.groupBoxNote.SuspendLayout();
@@ -132,11 +133,21 @@
             this.groupBoxNote.TabStop = false;
             this.groupBoxNote.Text = "Заметка";
             // 
+            // comboBoxNotePriority
+            // 
+            this.comboBoxNotePriority.FormattingEnabled = true;
+            this.comboBoxNotePriority.Location = new System.Drawing.Point(317, 48);
+            this.comboBoxNotePriority.Name = "comboBoxNotePriority";
+            this.comboBoxNotePriority.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxNotePriority.TabIndex = 11;
+            this.comboBoxNotePriority.SelectedIndexChanged += new System.EventHandler(this.comboBoxNotePriority_SelectedIndexChanged);
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(719, 330);
+            this.Controls.Add(this.comboBoxNotePriority);
             this.Controls.Add(this.groupBoxNote);
             this.Controls.Add(this.groupBoxTime);
             this.Controls.Add(this.groupBoxDate);
@@ -162,5 +173,6 @@
         private System.Windows.Forms.GroupBox groupBoxDate;
         private System.Windows.Forms.GroupBox groupBoxTime;
         private System.Windows.Forms.GroupBox groupBoxNote;
+        private System.Windows.Forms.ComboBox comboBoxNotePriority;
     }
 }

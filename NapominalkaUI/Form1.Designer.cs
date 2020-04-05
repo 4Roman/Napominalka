@@ -43,10 +43,11 @@ namespace NapominalkaUI
             this.toolStripMenuItemClose = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemAutorun = new System.Windows.Forms.ToolStripMenuItem();
             this.dataGridViewNotes = new System.Windows.Forms.DataGridView();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.noteBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.Приоритет = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewNotes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.noteBindingSource)).BeginInit();
@@ -132,7 +133,8 @@ namespace NapominalkaUI
             this.dataGridViewNotes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewNotes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2});
+            this.dataGridViewTextBoxColumn2,
+            this.Приоритет});
             this.dataGridViewNotes.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.dataGridViewNotes.DataSource = this.noteBindingSource;
             this.dataGridViewNotes.Location = new System.Drawing.Point(0, 0);
@@ -144,7 +146,16 @@ namespace NapominalkaUI
             this.dataGridViewNotes.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
             this.dataGridViewNotes.Size = new System.Drawing.Size(707, 544);
             this.dataGridViewNotes.StandardTab = true;
-            this.dataGridViewNotes.TabIndex = 3;           
+            this.dataGridViewNotes.TabIndex = 3;
+            // 
+            // panel1
+            // 
+            this.panel1.AutoSize = true;
+            this.panel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(0, 0);
+            this.panel1.TabIndex = 4;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -172,14 +183,12 @@ namespace NapominalkaUI
             // 
             this.noteBindingSource.DataSource = typeof(NapominalkaUI.Note);
             // 
-            // panel1
+            // Приоритет
             // 
-            this.panel1.AutoSize = true;
-            this.panel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(0, 0);
-            this.panel1.TabIndex = 4;
+            this.Приоритет.DataPropertyName = "Priority";
+            this.Приоритет.HeaderText = "Приоритет";
+            this.Приоритет.Name = "Приоритет";
+            this.Приоритет.Visible = false;
             // 
             // Form1
             // 
@@ -219,6 +228,7 @@ namespace NapominalkaUI
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Приоритет;
     }
 }
 

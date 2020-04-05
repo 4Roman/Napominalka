@@ -16,6 +16,7 @@ namespace NapominalkaUI
         public Form2()
         {
             InitializeComponent();
+            comboBoxNotePriority.DataSource = Enum.GetNames(typeof(Note.Priorities));
 
             dateTimePicker2.ShowUpDown = true;
         }
@@ -30,6 +31,9 @@ namespace NapominalkaUI
             Note note = new Note();
             DateTime date = dateTimePicker1.Value;
             DateTime time = dateTimePicker2.Value;
+            //Note.Priorities priority;
+            Note.Priorities priority = Note.Priorities.Low;
+            Enum.TryParse<Note.Priorities>(comboBoxNotePriority.SelectedItem.ToString(), out priority);
 
             if (date == null)
             {
@@ -41,6 +45,7 @@ namespace NapominalkaUI
                 MessageBox.Show("Заметка на прошедшую дату не возможна!");
                 return;
             }
+
             string text = richTextBox1.Text;
             if (text == null || text == string.Empty)
             {
@@ -49,10 +54,10 @@ namespace NapominalkaUI
             }
 
             note.Date = new DateTime(date.Year,date.Month,date.Day, time.Hour,time.Minute, 0);
+            note.Priority = priority;
             note.TextNote = text;
             ResultNote = note;
             this.Close();
-
         }
 
 
@@ -71,6 +76,11 @@ namespace NapominalkaUI
             DateTime date = dateTimePicker1.Value;
             string dateString = date.ToString();
             MessageBox.Show(dateString);
+        }
+
+        private void comboBoxNotePriority_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -14,6 +14,13 @@ namespace NapominalkaUI
 
         public DateTime Date { get; set; } = new DateTime();
         public string TextNote { get; set; } = string.Empty;
+        public Priorities Priority { get; set; } = Priorities.Low;
+        public enum Priorities
+        {
+            Low,
+            Medium,
+            High
+        }
 
         public static void SerializeNotesToFile(IEnumerable<Note> notes, string filepath = @"C:\Napominalka\Notes.xml")
         {
