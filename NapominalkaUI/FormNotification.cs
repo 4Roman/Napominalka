@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Выведение_данных_в_datagridview
+namespace NapominalkaUI
 {
     public partial class FormNotification : Form
     {

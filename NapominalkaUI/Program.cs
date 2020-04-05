@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Выведение_данных_в_datagridview
+namespace NapominalkaUI
 {
     static class Program
     {

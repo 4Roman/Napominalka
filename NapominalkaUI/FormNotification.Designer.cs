@@ -1,4 +1,4 @@
-﻿namespace Выведение_данных_в_datagridview
+﻿namespace NapominalkaUI
 {
     partial class FormNotification
     {

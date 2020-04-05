@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Выведение_данных_в_datagridview
+namespace NapominalkaUI
 {
     partial class Form1
     {
@@ -170,7 +170,7 @@ namespace Выведение_данных_в_datagridview
             // 
             // noteBindingSource
             // 
-            this.noteBindingSource.DataSource = typeof(Выведение_данных_в_datagridview.Note);
+            this.noteBindingSource.DataSource = typeof(NapominalkaUI.Note);
             // 
             // panel1
             // 

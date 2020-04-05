@@ -10,7 +10,7 @@ using System.IO;
 
 
 
-namespace Выведение_данных_в_datagridview
+namespace NapominalkaUI
 {
     public partial class Form1 : Form
     {

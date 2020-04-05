@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Выведение_данных_в_datagridview.Properties
+namespace NapominalkaUI.Properties
 {
 
 
