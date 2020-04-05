@@ -79,7 +79,7 @@
             // richTextBox1
             // 
             this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.richTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.richTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
             this.richTextBox1.Location = new System.Drawing.Point(3, 27);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.Size = new System.Drawing.Size(688, 136);

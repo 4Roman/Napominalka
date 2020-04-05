@@ -55,7 +55,8 @@ namespace Выведение_данных_в_datagridview
 
             // TODO: DataBinding
             dataGridViewNotes.AutoGenerateColumns = true;
-            dataGridViewNotes.DataSource = Notes;
+            dataGridViewNotes.DataSource = Notes;           
+
             ShowNotifications();
         }
         
@@ -268,7 +269,13 @@ namespace Выведение_данных_в_datagridview
             if (autorun == true)
                 toolStripMenuItemAutorun.CheckState = CheckState.Checked;
             else toolStripMenuItemAutorun.CheckState = CheckState.Unchecked;
-        }               
+        }
+
+      
+
+
+
+
 
         //public void Refresh()
         //{
