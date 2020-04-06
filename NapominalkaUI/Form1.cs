@@ -18,8 +18,8 @@ namespace NapominalkaUI
         List<Note> OldNotes { get; set; } = new List<Note>();
 
         public Form1()
-        {        
-            
+        {
+
             InitializeComponent();
             if (Directory.Exists(@"C:\Napominalka") == false) Directory.CreateDirectory(@"C:\Napominalka");
 
@@ -50,7 +50,7 @@ namespace NapominalkaUI
             {
                 MessageBox.Show("Не удалось считать файл!\n" + e.ToString());
                 InitializeDefaultNotesFile();
-            }       
+            }
 
             // TODO: DataBinding
             dataGridViewNotes.AutoGenerateColumns = true;
@@ -75,8 +75,7 @@ namespace NapominalkaUI
             Note.SerializeNotesToFile(Notes);
 
         }
-
-
+        
         static object locker = new object();
         public double DeltaTimeForNotifications { get; set; } = 5.0;
         public List<Note> CheckNotesOnCurrentDate(IEnumerable<Note> notes, DateTime date)
@@ -298,6 +297,41 @@ namespace NapominalkaUI
             }
         }
 
+        /// <summary>
+        /// Пока не используется
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void dataGridViewNotes_SortCompare(object sender, DataGridViewSortCompareEventArgs e)
+        {
+            // Try to sort based on the cells in the current column.
+            e.SortResult = System.String.Compare(
+                e.CellValue1.ToString(), e.CellValue2.ToString());
+
+            //// If the cells are equal, sort based on the ID column.
+            //if (e.SortResult == 0 && e.Column.Name != "ID")
+            //{
+            //    e.SortResult = System.String.Compare(
+            //        dataGridViewNotes.Rows[e.RowIndex1].Cells["ID"].Value.ToString(),
+            //        dataGridViewNotes.Rows[e.RowIndex2].Cells["ID"].Value.ToString());
+            //}
+            e.Handled = true;
+        }
+
+        private void dataGridViewNotes_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            SortDataGridViewByDate();
+        }
+
+        private void SortDataGridViewByDate()
+        {
+            Notes = new BindingList<Note>(Notes.OrderBy(n => n.Date).ToList());
+            // tell the bindinglist to raise a list change event so that 
+            // bound controls reflect the new item order
+            dataGridViewNotes.DataSource = Notes;
+            dataGridViewNotes.Update();
+            //this.dataGridViewNotes.Sort(dataGridViewNotes.Columns[e.ColumnIndex], ListSortDirection.Ascending);
+        }
 
         //public void Refresh()
         //{
