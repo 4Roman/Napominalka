@@ -15,11 +15,10 @@ namespace NapominalkaUI
     {
         const string applicationName = "Napominalka";
         BindingList<Note> Notes { get; set; } = new BindingList<Note>();
-        List<Note> OldNotes { get; set; } = new List<Note>();
+        //List<Note> OldNotes { get; set; } = new List<Note>();
 
         public Form1()
         {
-
             InitializeComponent();
             if (Directory.Exists(@"C:\Napominalka") == false) Directory.CreateDirectory(@"C:\Napominalka");
 
@@ -76,7 +75,7 @@ namespace NapominalkaUI
 
         }
         
-        static object locker = new object();
+        static readonly object locker = new object();
         public double DeltaTimeForNotifications { get; set; } = 5.0;
         public List<Note> CheckNotesOnCurrentDate(IEnumerable<Note> notes, DateTime date)
         {
@@ -112,13 +111,15 @@ namespace NapominalkaUI
 
         public void buttonCreateNote_Click(object sender, EventArgs e)
         {
-            Form2 newForm = new Form2();
-            newForm.ShowDialog();
+            using (Form2 newForm = new Form2())
+            {
+                newForm.ShowDialog();
 
-            if (newForm.ResultNote == null)
-                return;
+                if (newForm.ResultNote == null)
+                    return;
 
-            Notes.Add(newForm.ResultNote);
+                Notes.Add(newForm.ResultNote);
+            }
         }
 
         private void buttonSaveNotes_Click(object sender, EventArgs e)
@@ -154,14 +155,15 @@ namespace NapominalkaUI
 
                 foreach (var note in notesOnCurrentDay)
                 {
-                    var formNotification = new FormNotification(note);
+                    using (var formNotification = new FormNotification(note))
+                    {
+                        formNotification.ShowDialog();
+                        if (formNotification.Note == null)
+                            Notes.Remove(note);
 
-                    formNotification.ShowDialog();
-                    if (formNotification.Note == null)
-                        Notes.Remove(note);
-
-                    //MessageBox.Show(note.TextNote); // TODO заменить на форму с переносом уведомления
-                    //Refresh();
+                        //MessageBox.Show(note.TextNote); // TODO заменить на форму с переносом уведомления
+                        //Refresh();
+                    }
                 }
                 busyNotifications = false;
             }
@@ -200,7 +202,7 @@ namespace NapominalkaUI
 
         private static bool CheckAutorun()
         {
-            bool isEnableAutorun = false;
+            bool isEnableAutorun;
             RegistryKey reg;
             reg = Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Run\\");
             var autoRun = reg.GetValue(applicationName); // проверяем наличие записи в реестре
@@ -226,7 +228,7 @@ namespace NapominalkaUI
         /// </summary>
         /// <param name="autorun"></param>
         /// <returns></returns>
-        public bool SetAutorunValue(bool autorun)
+        static public bool SetAutorunValue(bool autorun)
         {
             //const string name = "MyTestApplication"; // как запустить этот участок?
             string ExePath = System.Windows.Forms.Application.ExecutablePath;
