@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace NapominalkaUI
@@ -53,7 +46,7 @@ namespace NapominalkaUI
                 return;
             }
 
-            note.Date = new DateTime(date.Year,date.Month,date.Day, time.Hour,time.Minute, 0);
+            note.Date = new DateTime(date.Year, date.Month, date.Day, time.Hour, time.Minute, 0);
             note.Priority = priority;
             note.TextNote = text;
             ResultNote = note;

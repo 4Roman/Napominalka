@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Concurrent;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Windows.Forms;
 using System.ComponentModel;
-using System.Linq;
-using Microsoft.Win32;
-using System.IO;
 using System.Drawing;
+using System.IO;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace NapominalkaUI
 {
@@ -74,7 +72,7 @@ namespace NapominalkaUI
             Note.SerializeNotesToFile(Notes);
 
         }
-        
+
         static readonly object locker = new object();
         public double DeltaTimeForNotifications { get; set; } = 5.0;
         public List<Note> CheckNotesOnCurrentDate(IEnumerable<Note> notes, DateTime date)

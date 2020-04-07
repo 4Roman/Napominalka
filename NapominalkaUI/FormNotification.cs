@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace NapominalkaUI
@@ -35,8 +28,8 @@ namespace NapominalkaUI
             this.Close();
         }
 
-        private void buttonNextYear_Click(object sender, EventArgs e)            
-        {           
+        private void buttonNextYear_Click(object sender, EventArgs e)
+        {
             Note.Date = Note.Date.AddYears(1);
             this.Close();
         }
