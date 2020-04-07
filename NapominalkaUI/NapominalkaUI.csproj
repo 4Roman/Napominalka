@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{01A5B75A-21F5-4ED2-B0EF-EAE5C1A15067}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Выведение_данных_в_datagridview</RootNamespace>
-    <AssemblyName>Выведение данных в datagridview</AssemblyName>
+    <RootNamespace>NapominalkaUI</RootNamespace>
+    <AssemblyName>NapominalkaUI</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -31,6 +31,9 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>NapominalkaUI.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Nevron.Nov.Barcode, Version=20.1.28.12, Culture=neutral, PublicKeyToken=b33b1a04bb5ca8ad" />
@@ -96,6 +99,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\DataSources\Note.datasource" />
     <None Include="Properties\Settings.settings">
