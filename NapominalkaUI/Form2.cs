@@ -25,8 +25,7 @@ namespace NapominalkaUI
             DateTime date = dateTimePicker1.Value;
             DateTime time = dateTimePicker2.Value;
             //Note.Priorities priority;
-            Note.Priorities priority = Note.Priorities.Low;
-            Enum.TryParse<Note.Priorities>(comboBoxNotePriority.SelectedItem.ToString(), out priority);
+            Enum.TryParse<Note.Priorities>(comboBoxNotePriority.SelectedItem.ToString(), out var priority);
 
             if (date == null)
             {
@@ -40,7 +39,7 @@ namespace NapominalkaUI
             }
 
             string text = richTextBox1.Text;
-            if (text == null || text == string.Empty)
+            if (string.IsNullOrEmpty(text))
             {
                 MessageBox.Show("Заметка пуста!");
                 return;
@@ -58,19 +57,7 @@ namespace NapominalkaUI
         {
 
         }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            string text = richTextBox1.Text;
-            MessageBox.Show(text);
-        }
-        private void button4_Click(object sender, EventArgs e)
-        {
-            DateTime date = dateTimePicker1.Value;
-            string dateString = date.ToString();
-            MessageBox.Show(dateString);
-        }
-
+        
         private void comboBoxNotePriority_SelectedIndexChanged(object sender, EventArgs e)
         {
 

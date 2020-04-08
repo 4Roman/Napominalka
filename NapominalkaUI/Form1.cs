@@ -11,7 +11,7 @@ namespace NapominalkaUI
 {
     public partial class Form1 : Form
     {
-        const string applicationName = "Napominalka";
+        const string ApplicationName = "Napominalka";
         BindingList<Note> Notes { get; set; } = new BindingList<Note>();
         //List<Note> OldNotes { get; set; } = new List<Note>();
 
@@ -45,16 +45,16 @@ namespace NapominalkaUI
             }
             catch (Exception e)
             {
-                MessageBox.Show("Не удалось считать файл!\n" + e.ToString());
+                MessageBox.Show("Не удалось считать файл!\n" + e);
                 InitializeDefaultNotesFile();
             }
 
-            // TODO: DataBinding
             dataGridViewNotes.AutoGenerateColumns = true;
             dataGridViewNotes.DataSource = Notes;
+            //СolorizeByPriorities(dataGridViewNotes); из-за бага WinForms, стабильно работает только внутри OnDatabindingsComplete
             //dataGridViewNotes.DataBindings.CollectionChanged += DataBindings_CollectionChanged;
 
-            ShowNotifications();
+            //ShowNotifications();
         }
 
         private void DataBindings_CollectionChanged(object sender, CollectionChangeEventArgs e)
@@ -165,7 +165,7 @@ namespace NapominalkaUI
                 }
                 busyNotifications = false;
             }
-            СolorizeByPriorities(dataGridViewNotes);
+            //СolorizeByPriorities(dataGridViewNotes);
             dataGridViewNotes.Refresh();
         }
 
@@ -203,7 +203,7 @@ namespace NapominalkaUI
             bool isEnableAutorun;
             RegistryKey reg;
             reg = Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Run\\");
-            var autoRun = reg.GetValue(applicationName); // проверяем наличие записи в реестре
+            var autoRun = reg.GetValue(ApplicationName); // проверяем наличие записи в реестре
             if (autoRun == null)
                 isEnableAutorun = false;
             else isEnableAutorun = true;
@@ -226,10 +226,10 @@ namespace NapominalkaUI
         /// </summary>
         /// <param name="autorun"></param>
         /// <returns></returns>
-        static public bool SetAutorunValue(bool autorun)
+        public static bool SetAutorunValue(bool autorun)
         {
             //const string name = "MyTestApplication"; // как запустить этот участок?
-            string ExePath = System.Windows.Forms.Application.ExecutablePath;
+            string exePath = System.Windows.Forms.Application.ExecutablePath;
             RegistryKey reg;
             reg = Registry.CurrentUser.CreateSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Run\\");
             //reg.GetValue(name) Всё работает
@@ -237,9 +237,9 @@ namespace NapominalkaUI
             try
             {
                 if (autorun)
-                    reg.SetValue(applicationName, ExePath);
+                    reg.SetValue(ApplicationName, exePath);
                 else
-                    reg.DeleteValue(applicationName);
+                    reg.DeleteValue(ApplicationName);
 
                 reg.Close();
             }
@@ -278,23 +278,29 @@ namespace NapominalkaUI
         private void СolorizeByPriorities(System.Windows.Forms.DataGridView dataGridView)
         {
             System.Collections.IList list = dataGridView.Rows;
-            for (int i = 0; i < list.Count; i++)
+            foreach (var item in list)
             {
-                DataGridViewRow row = (DataGridViewRow)list[i];
+                DataGridViewRow row = (DataGridViewRow) item;
                 var priorityCell = row.Cells["Приоритет"];
                 //var priorityCell = dataGridView.
 
                 if (priorityCell.Value != null)
                 {
                     if (priorityCell.Value.ToString() == Note.Priorities.High.ToString())
-                        row.DefaultCellStyle.BackColor = Color.Red;
+                        foreach (DataGridViewCell cell in priorityCell.OwningRow.Cells)
+                            cell.Style.BackColor = Color.Red;
                     if (priorityCell.Value.ToString() == Note.Priorities.Medium.ToString())
-                        row.DefaultCellStyle.BackColor = Color.Yellow;
-                    if (priorityCell.Value.ToString() == Note.Priorities.Low.ToString())
-                        row.DefaultCellStyle.BackColor = Color.LightGray;
-                }
+                        foreach (DataGridViewCell cell in priorityCell.OwningRow.Cells)
+                            cell.Style.BackColor =  Color.Yellow;
 
+                    if (priorityCell.Value.ToString() == Note.Priorities.Low.ToString())
+                        foreach (DataGridViewCell cell in priorityCell.OwningRow.Cells)
+                            cell.Style.BackColor = Color.DarkGray;
+                }
             }
+
+            dataGridView.Refresh();
+            this.Update();
         }
 
         /// <summary>
@@ -331,6 +337,11 @@ namespace NapominalkaUI
             dataGridViewNotes.DataSource = Notes;
             dataGridViewNotes.Update();
             //this.dataGridViewNotes.Sort(dataGridViewNotes.Columns[e.ColumnIndex], ListSortDirection.Ascending);
+        }
+
+        private void dataGridViewNotes_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            СolorizeByPriorities(dataGridViewNotes);
         }
 
         //public void Refresh()
