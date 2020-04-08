@@ -12,7 +12,7 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
-	<RunCodeAnalysis>false</RunCodeAnalysis>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -32,36 +32,21 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-	<RunCodeAnalysis>false</RunCodeAnalysis>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject>NapominalkaUI.Program</StartupObject>
-	<RunCodeAnalysis>false</RunCodeAnalysis>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Nevron.Nov.Barcode, Version=20.1.28.12, Culture=neutral, PublicKeyToken=b33b1a04bb5ca8ad" />
-    <Reference Include="Nevron.Nov.Chart, Version=20.1.28.12, Culture=neutral, PublicKeyToken=b33b1a04bb5ca8ad" />
-    <Reference Include="Nevron.Nov.Diagram, Version=20.1.28.12, Culture=neutral, PublicKeyToken=b33b1a04bb5ca8ad" />
-    <Reference Include="Nevron.Nov.Grid, Version=20.1.28.12, Culture=neutral, PublicKeyToken=b33b1a04bb5ca8ad" />
-    <Reference Include="Nevron.Nov.Host.WinForm, Version=20.1.28.12, Culture=neutral, PublicKeyToken=b33b1a04bb5ca8ad" />
-    <Reference Include="Nevron.Nov.Presentation, Version=20.1.28.12, Culture=neutral, PublicKeyToken=b33b1a04bb5ca8ad" />
-    <Reference Include="Nevron.Nov.Schedule, Version=20.1.28.12, Culture=neutral, PublicKeyToken=b33b1a04bb5ca8ad" />
-    <Reference Include="Nevron.Nov.Text, Version=20.1.28.12, Culture=neutral, PublicKeyToken=b33b1a04bb5ca8ad" />
-    <Reference Include="Nevron.Nov.WinFormControls, Version=20.1.28.12, Culture=neutral, PublicKeyToken=b33b1a04bb5ca8ad" />
     <Reference Include="SerializeExtension">
       <HintPath>.\SerializeExtension.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Form1.cs">
