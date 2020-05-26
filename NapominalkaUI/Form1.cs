@@ -57,10 +57,10 @@ namespace NapominalkaUI
             //ShowNotifications();
         }
 
-        private void DataBindings_CollectionChanged(object sender, CollectionChangeEventArgs e)
-        {
-            СolorizeByPriorities(dataGridViewNotes);
-        }
+        //private void DataBindings_CollectionChanged(object sender, CollectionChangeEventArgs e)
+        //{
+        //    СolorizeByPriorities(dataGridViewNotes);
+        //}
 
         public void InitializeDefaultNotesFile()
         {
@@ -117,6 +117,7 @@ namespace NapominalkaUI
                     return;
 
                 Notes.Add(newForm.ResultNote);
+                SortDataGridViewByDate();
             }
         }
 
