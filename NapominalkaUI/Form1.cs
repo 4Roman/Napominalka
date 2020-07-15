@@ -122,17 +122,7 @@ namespace NapominalkaUI
                 SortDataGridViewByDate();
             }
         }
-
-        private void buttonSaveNotes_Click(object sender, EventArgs e)
-        {
-            //соханение в xml строку
-            //string xml = Notes.SerializeToXmlString();
-            //notes.Add(new Note());
-            //сохранение xml строки в файл
-            //SerializeExtension.SaveToXmlFile(xml, "Notes.xml");
-            Note.SerializeNotesToFile(Notes);
-            MessageBox.Show("Успешно сохранено");
-        }
+        
 
         private static readonly Object notificationLocker = new Object();
         private void timer1_Tick(object sender, EventArgs e)
