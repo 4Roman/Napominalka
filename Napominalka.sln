@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.29403.142
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NapominalkaUI", "NapominalkaUI\NapominalkaUI.csproj", "{01A5B75A-21F5-4ED2-B0EF-EAE5C1A15067}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Napominalka", "Setuper\Setuper.vdproj", "{1A0ADE46-6C63-44E9-82C7-8990E933FBEE}"
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "NapominalkaInstaller", "Napominalka\Napominalka.vdproj", "{8A05B147-F91B-45F1-8D93-D2476125E26A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,8 +17,9 @@ Global
 		{01A5B75A-21F5-4ED2-B0EF-EAE5C1A15067}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{01A5B75A-21F5-4ED2-B0EF-EAE5C1A15067}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{01A5B75A-21F5-4ED2-B0EF-EAE5C1A15067}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1A0ADE46-6C63-44E9-82C7-8990E933FBEE}.Debug|Any CPU.ActiveCfg = Debug
-		{1A0ADE46-6C63-44E9-82C7-8990E933FBEE}.Release|Any CPU.ActiveCfg = Release
+		{8A05B147-F91B-45F1-8D93-D2476125E26A}.Debug|Any CPU.ActiveCfg = Debug
+		{8A05B147-F91B-45F1-8D93-D2476125E26A}.Release|Any CPU.ActiveCfg = Release
+		{8A05B147-F91B-45F1-8D93-D2476125E26A}.Release|Any CPU.Build.0 = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
