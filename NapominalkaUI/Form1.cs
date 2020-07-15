@@ -2,10 +2,12 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+
 
 namespace NapominalkaUI
 {
@@ -345,11 +347,61 @@ namespace NapominalkaUI
             СolorizeByPriorities(dataGridViewNotes);
         }
 
-        //public void Refresh()
+        private void dataGridViewNotes_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                int a = dataGridViewNotes.CurrentRow.Index;
+                ContextMenu m = new ContextMenu();
+                m.MenuItems.Add(new MenuItem("Cut"));
+                m.MenuItems.Add(new MenuItem("Copy"));
+                m.MenuItems.Add(new MenuItem("Paste"));
+
+                int currentMouseOverRow = dataGridViewNotes.HitTest(e.X, e.Y).RowIndex;
+
+                if (currentMouseOverRow >= 0)
+                {
+                    m.MenuItems.Add(new MenuItem(string.Format("Do something to row {0}", currentMouseOverRow.ToString())));
+                }
+
+                m.Show(dataGridViewNotes, new Point(e.X, e.Y));
+
+            }
+
+        }
+
+
+        //private void dataGridViewNotes_Click(object sender, EventArgs e)
         //{
-        //    listView1.Clear();
-        //    foreach (var note in Notes)
-        //        listView1.Items.Add(note.Date.ToShortDateString() + " : " + note.TextNote);
+        //    int a = dataGridViewNotes.CurrentRow.Index;
+
+        //    dataGridViewNotes.Rows.Remove(dataGridViewNotes.Rows[a]);
+
+        //}
+
+
+        //private void dataGridViewNotes_Click(object sender, EventArgs e)
+        //{
+        //    if (e.Button == MouseButtons.Right)
+        //    {
+        //        int a = dataGridViewNotes.CurrentRow.Index;
+        //        ContextMenu m = new ContextMenu();
+        //        m.MenuItems.Add(new MenuItem("Cut"));
+        //        m.MenuItems.Add(new MenuItem("Copy"));
+        //        m.MenuItems.Add(new MenuItem("Paste"));
+
+        //        int currentMouseOverRow = dataGridView1.HitTest(e.X, e.Y).RowIndex;
+
+        //        if (currentMouseOverRow >= 0)
+        //        {
+        //            m.MenuItems.Add(new MenuItem(string.Format("Do something to row {0}", currentMouseOverRow.ToString())));
+        //        }
+
+        //        m.Show(dataGridView1, new Point(e.X, e.Y));
+
+        //    }           
+
+
         //}
 
     }

@@ -42,15 +42,18 @@ namespace NapominalkaUI
             this.toolStripMenuItemOpen = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemClose = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemAutorun = new System.Windows.Forms.ToolStripMenuItem();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.Приоритет = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewNotes = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Приоритет = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.noteBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.удалитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewNotes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.noteBindingSource)).BeginInit();
+            this.contextMenuStrip2.SuspendLayout();
             this.SuspendLayout();
             // 
             // timer1
@@ -113,6 +116,22 @@ namespace NapominalkaUI
             this.toolStripMenuItemAutorun.Text = "Автозапуск";
             this.toolStripMenuItemAutorun.Click += new System.EventHandler(this.toolStripMenuItemAutorun_Click);
             // 
+            // panel1
+            // 
+            this.panel1.AutoSize = true;
+            this.panel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(0, 0);
+            this.panel1.TabIndex = 4;
+            // 
+            // Приоритет
+            // 
+            this.Приоритет.DataPropertyName = "Priority";
+            this.Приоритет.HeaderText = "Приоритет";
+            this.Приоритет.Name = "Приоритет";
+            this.Приоритет.Visible = false;
+            // 
             // dataGridViewNotes
             // 
             this.dataGridViewNotes.AllowDrop = true;
@@ -150,6 +169,7 @@ namespace NapominalkaUI
             this.dataGridViewNotes.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridViewNotes_ColumnHeaderMouseClick);
             this.dataGridViewNotes.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dataGridViewNotes_DataBindingComplete);
             this.dataGridViewNotes.SortCompare += new System.Windows.Forms.DataGridViewSortCompareEventHandler(this.dataGridViewNotes_SortCompare);
+            this.dataGridViewNotes.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridViewNotes_MouseClick);
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -172,25 +192,22 @@ namespace NapominalkaUI
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
             this.dataGridViewTextBoxColumn2.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
-            // Приоритет
-            // 
-            this.Приоритет.DataPropertyName = "Priority";
-            this.Приоритет.HeaderText = "Приоритет";
-            this.Приоритет.Name = "Приоритет";
-            this.Приоритет.Visible = false;
-            // 
             // noteBindingSource
             // 
             this.noteBindingSource.DataSource = typeof(NapominalkaUI.Note);
             // 
-            // panel1
+            // contextMenuStrip2
             // 
-            this.panel1.AutoSize = true;
-            this.panel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(0, 0);
-            this.panel1.TabIndex = 4;
+            this.contextMenuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.удалитьToolStripMenuItem});
+            this.contextMenuStrip2.Name = "contextMenuStrip2";
+            this.contextMenuStrip2.Size = new System.Drawing.Size(119, 26);
+            // 
+            // удалитьToolStripMenuItem
+            // 
+            this.удалитьToolStripMenuItem.Name = "удалитьToolStripMenuItem";
+            this.удалитьToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
+            this.удалитьToolStripMenuItem.Text = "Удалить";
             // 
             // Form1
             // 
@@ -212,6 +229,7 @@ namespace NapominalkaUI
             this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewNotes)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.noteBindingSource)).EndInit();
+            this.contextMenuStrip2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -225,12 +243,14 @@ namespace NapominalkaUI
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemOpen;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemClose;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemAutorun;
-        private System.Windows.Forms.DataGridView dataGridViewNotes;
         private System.Windows.Forms.BindingSource noteBindingSource;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Приоритет;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridView dataGridViewNotes;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip2;
+        private System.Windows.Forms.ToolStripMenuItem удалитьToolStripMenuItem;
     }
 }
 
