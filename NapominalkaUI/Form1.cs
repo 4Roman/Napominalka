@@ -7,7 +7,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
-
+using System.Windows.Forms.VisualStyles;
 
 namespace NapominalkaUI
 {
@@ -16,13 +16,25 @@ namespace NapominalkaUI
         const string ApplicationName = "Napominalka";
         BindingList<Note> Notes { get; set; } = new BindingList<Note>();
         //List<Note> OldNotes { get; set; } = new List<Note>();
+        ContextMenuStrip myContextMenuStrip = new ContextMenuStrip();
 
         public Form1()
         {
             InitializeComponent();
             if (Directory.Exists(@"C:\Napominalka") == false) Directory.CreateDirectory(@"C:\Napominalka");
 
-
+            //инициализация контекстного меню           
+            myContextMenuStrip.AutoClose = true;
+            {
+                ToolStripMenuItem copyMenuItem = new ToolStripMenuItem("Копировать");
+                ToolStripMenuItem pasteMenuItem = new ToolStripMenuItem("Вставить");
+                ToolStripMenuItem deleteMenuItem = new ToolStripMenuItem("Удалить");
+                myContextMenuStrip.Items.AddRange(new[] { copyMenuItem, pasteMenuItem, deleteMenuItem });
+                //dataGridViewNotes.ContextMenuStrip = myContextMenuStrip;
+                copyMenuItem.Click += copyMenuItem_Click;
+                pasteMenuItem.Click += pasteMenuItem_Click;
+                deleteMenuItem.Click += deleteMenuItem_Click;
+            }
             //listView1.
 
             //List<Note> notes = new List<Note>();
@@ -55,7 +67,7 @@ namespace NapominalkaUI
             dataGridViewNotes.DataSource = Notes;
             //СolorizeByPriorities(dataGridViewNotes); из-за бага WinForms, стабильно работает только внутри OnDatabindingsComplete
             //dataGridViewNotes.DataBindings.CollectionChanged += DataBindings_CollectionChanged;
-
+            string buffer = null;
             //ShowNotifications();
         }
 
@@ -341,23 +353,35 @@ namespace NapominalkaUI
         {
             if (e.Button == MouseButtons.Right)
             {
-                int a = dataGridViewNotes.CurrentRow.Index;
-                ContextMenu m = new ContextMenu();
-                m.MenuItems.Add(new MenuItem("Cut"));
-                m.MenuItems.Add(new MenuItem("Copy"));
-                m.MenuItems.Add(new MenuItem("Paste"));
-
-                int currentMouseOverRow = dataGridViewNotes.HitTest(e.X, e.Y).RowIndex;
-
-                if (currentMouseOverRow >= 0)
-                {
-                    m.MenuItems.Add(new MenuItem(string.Format("Do something to row {0}", currentMouseOverRow.ToString())));
+                var xy = dataGridViewNotes.HitTest(e.X, e.Y);
+                if ((dataGridViewNotes.RowCount+1) > xy.RowIndex)
+                {                    
+                    dataGridViewNotes[1, xy.RowIndex].Selected = true;
+                    myContextMenuStrip.Show(Cursor.Position.X, Cursor.Position.Y);
                 }
-
-                m.Show(dataGridViewNotes, new Point(e.X, e.Y));
-
+                
             }
+        }
 
+        void pasteMenuItem_Click(object sender, EventArgs e)
+        {
+            var q = dataGridViewNotes.SelectedCells[0];
+            dataGridViewNotes[q.ColumnIndex, q.RowIndex].Value = Clipboard.GetText();
+            dataGridViewNotes.ClearSelection();
+            
+        }
+
+        void copyMenuItem_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetDataObject(this.dataGridViewNotes.GetClipboardContent());
+            dataGridViewNotes.ClearSelection();
+        }
+
+        void deleteMenuItem_Click(object sender, EventArgs e)
+        {
+            var q = dataGridViewNotes.SelectedCells[0];
+            dataGridViewNotes.Rows.RemoveAt(q.RowIndex);
+            dataGridViewNotes.ClearSelection();
         }
 
 
