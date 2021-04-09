@@ -134,7 +134,6 @@ namespace NapominalkaUI
             // 
             // dataGridViewNotes
             // 
-            this.dataGridViewNotes.AllowUserToDeleteRows = false;
             this.dataGridViewNotes.AllowUserToResizeColumns = false;
             this.dataGridViewNotes.AllowUserToResizeRows = false;
             this.dataGridViewNotes.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -217,9 +216,9 @@ namespace NapominalkaUI
             this.AutoSize = true;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
             this.ClientSize = new System.Drawing.Size(707, 544);
-            this.Controls.Add(this.dataGridViewNotes);
             this.Controls.Add(this.buttonCreateNote);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.dataGridViewNotes);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Form1";

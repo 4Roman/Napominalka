@@ -14,7 +14,8 @@ namespace NapominalkaUI
     public partial class Form1 : Form
     {
         const string ApplicationName = "Napominalka";
-        BindingList<Note> Notes { get; set; } = new BindingList<Note>();
+        List<Note> Notes { get; set; } = new List<Note>();
+        
         //List<Note> OldNotes { get; set; } = new List<Note>();
         ContextMenuStrip myContextMenuStrip = new ContextMenuStrip();
 
@@ -55,7 +56,7 @@ namespace NapominalkaUI
             // пытаемся считать файл
             try
             {
-                Notes = new BindingList<Note>(Note.DerializeNotesFromFile().ToList());
+                Notes = new List<Note>(Note.DerializeNotesFromFile().ToList());
             }
             catch (Exception e)
             {
@@ -67,7 +68,7 @@ namespace NapominalkaUI
             dataGridViewNotes.DataSource = Notes;
             //СolorizeByPriorities(dataGridViewNotes); из-за бага WinForms, стабильно работает только внутри OnDatabindingsComplete
             //dataGridViewNotes.DataBindings.CollectionChanged += DataBindings_CollectionChanged;
-            string buffer = null;
+            
             //ShowNotifications();
         }
 
@@ -336,7 +337,7 @@ namespace NapominalkaUI
 
         private void SortDataGridViewByDate()
         {
-            Notes = new BindingList<Note>(Notes.OrderBy(n => n.Date).ToList());
+            Notes = new List<Note>(Notes.OrderBy(n => n.Date).ToList());
             // tell the bindinglist to raise a list change event so that 
             // bound controls reflect the new item order
             dataGridViewNotes.DataSource = Notes;
@@ -349,7 +350,7 @@ namespace NapominalkaUI
             СolorizeByPriorities(dataGridViewNotes);
         }
 
-        private void dataGridViewNotes_MouseClick(object sender, MouseEventArgs e)
+        public void dataGridViewNotes_MouseClick(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Right)
             {
@@ -377,11 +378,14 @@ namespace NapominalkaUI
             dataGridViewNotes.ClearSelection();
         }
 
-        void deleteMenuItem_Click(object sender, EventArgs e)
+        public void deleteMenuItem_Click(object sender, EventArgs e)
         {
             var q = dataGridViewNotes.SelectedCells[0];
-            dataGridViewNotes.Rows.RemoveAt(q.RowIndex);
+            Notes.RemoveAt(dataGridViewNotes.CurrentRow.Index);
+            //dataGridViewNotes.Rows.RemoveAt(q.RowIndex);
             dataGridViewNotes.ClearSelection();
+            dataGridViewNotes.Refresh();
+            dataGridViewNotes.EndEdit();
         }
 
 
